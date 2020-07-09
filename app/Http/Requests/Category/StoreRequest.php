@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Category;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class LoginRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     public function authorize()
     {
@@ -16,17 +17,20 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'email|required',
-            'password' => 'required',
+            'name' => [
+                'required',
+                'min:3',
+                Rule::unique('categories')->ignore($this->id)
+            ]
         ];
     }
 
     public function messages()
     {
         return [
-            'email.email' => 'Email is not valid!',
-            'email.required' => 'email is required!',
-            'password.required' => 'Password is required!'
+            'name.required' => 'Name is required!',
+            'name.min' => 'Please input more than 3 character',
+            'name.unique' => 'Please input another name'
         ];
     }
 

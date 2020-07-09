@@ -18,5 +18,13 @@ Route::group(['namespace' => 'Api'], function() {
     
     Route::group(['middleware' => 'auth:api'], function() {
         Route::get('me', 'AuthController@me');
+
+        Route::group(['prefix' => 'categories'], function() {
+            Route::get('', 'CategoryController@index');
+            Route::post('', 'CategoryController@store');
+            Route::get('{id}', 'CategoryController@show');
+            Route::put('{id}', 'CategoryController@update');
+            Route::delete('{id}', 'CategoryController@delete');
+        });
     });
 });
