@@ -48,8 +48,20 @@ class AuthController extends Controller
                         "user" => $user,
                         "token" => $accessToken
                     ),
-                ), 401
+                ), 200
             );
         }
+    }
+
+    public function me()
+    {
+        return response()->json(
+            $this->formatResponse(
+                "User data",
+                array(
+                    "user" => auth()->user()
+                ),
+            ), 200
+        );
     }
 }
