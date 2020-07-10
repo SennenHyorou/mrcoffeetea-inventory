@@ -35,5 +35,14 @@ Route::group(['namespace' => 'Api'], function() {
             Route::post('{id}/photo', 'SupplierController@updatePhoto');
             Route::delete('{id}', 'SupplierController@delete');
         });
+
+        Route::group(['prefix' => 'products'], function() {
+            Route::get('', 'ProductController@index');
+            Route::post('', 'ProductController@store');
+            Route::get('{id}', 'ProductController@show');
+            Route::put('{id}', 'ProductController@update');
+            Route::post('{id}/photo', 'ProductController@updatePhoto');
+            Route::delete('{id}', 'ProductController@delete');
+        });
     });
 });

@@ -19,8 +19,6 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('supplier_id');
             $table->string('code');
-            $table->string('garage');
-            $table->string('route');
             $table->string('image');
             $table->dateTime('buying_date');
             $table->dateTime('expire_date');
