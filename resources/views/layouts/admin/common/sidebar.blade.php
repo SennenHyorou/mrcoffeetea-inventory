@@ -154,21 +154,9 @@
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="#" class="nav-link">
+							<a href="{{ route('admin.report.product') }}" class="nav-link">
 								<i class="fa fa-circle-o nav-icon"></i>
 								<p>Product's Report</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link">
-								<i class="fa fa-circle-o nav-icon"></i>
-								<p>Stock's Report</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link">
-								<i class="fa fa-circle-o nav-icon"></i>
-								<p>Profit's Report</p>
 							</a>
 						</li>
 					</ul>
