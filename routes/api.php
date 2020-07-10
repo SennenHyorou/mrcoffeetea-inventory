@@ -24,7 +24,7 @@ Route::group(['namespace' => 'Api'], function() {
             Route::post('', 'CategoryController@store');
             Route::get('{id}', 'CategoryController@show');
             Route::put('{id}', 'CategoryController@update');
-            Route::delete('{id}', 'CategoryController@delete');
+            Route::delete('{id}', 'CategoryController@destroy');
         });
 
         Route::group(['prefix' => 'suppliers'], function() {
@@ -33,7 +33,7 @@ Route::group(['namespace' => 'Api'], function() {
             Route::get('{id}', 'SupplierController@show');
             Route::put('{id}', 'SupplierController@update');
             Route::post('{id}/photo', 'SupplierController@updatePhoto');
-            Route::delete('{id}', 'SupplierController@delete');
+            Route::delete('{id}', 'SupplierController@destroy');
         });
 
         Route::group(['prefix' => 'products'], function() {
@@ -42,7 +42,17 @@ Route::group(['namespace' => 'Api'], function() {
             Route::get('{id}', 'ProductController@show');
             Route::put('{id}', 'ProductController@update');
             Route::post('{id}/photo', 'ProductController@updatePhoto');
-            Route::delete('{id}', 'ProductController@delete');
+            Route::delete('{id}', 'ProductController@destroy');
+        });
+
+        Route::group(['prefix' => 'expenses'], function() {
+            Route::get('', 'ExpenseController@index');
+            Route::get('today', 'ExpenseController@today_expense');
+            Route::get('month', 'ExpenseController@month_expense');
+            Route::get('yearly', 'ExpenseController@index');
+            Route::post('', 'ExpenseController@store');
+            Route::put('{id}', 'ExpenseController@update');
+            Route::delete('{id}', 'ExpenseController@destroy');
         });
     });
 });
