@@ -54,5 +54,9 @@ Route::group(['namespace' => 'Api'], function() {
             Route::put('{id}', 'ExpenseController@update');
             Route::delete('{id}', 'ExpenseController@destroy');
         });
+
+        Route::group(['prefix' => 'reports'], function() {
+            Route::get("product", 'ReportController@product');
+        });
     });
 });
