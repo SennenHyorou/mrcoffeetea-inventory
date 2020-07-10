@@ -49,7 +49,7 @@ Route::group(['namespace' => 'Api'], function() {
             Route::get('', 'ExpenseController@index');
             Route::get('today', 'ExpenseController@today_expense');
             Route::get('month', 'ExpenseController@month_expense');
-            Route::get('yearly', 'ExpenseController@index');
+            Route::get('year', 'ExpenseController@year_expense');
             Route::post('', 'ExpenseController@store');
             Route::put('{id}', 'ExpenseController@update');
             Route::delete('{id}', 'ExpenseController@destroy');

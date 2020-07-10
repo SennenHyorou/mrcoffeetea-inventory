@@ -72,7 +72,7 @@ class ExpenseController extends Controller
         }
     }
 
-    public function yearly_expense(Request $request)
+    public function year_expense(Request $request)
     {
         try {
             $year = $request->year;
