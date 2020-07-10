@@ -36,7 +36,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">
                                     EXPENSES LISTS
-                                    <small class="text-danger pull-right">Total Expenses : {{ $expenses->sum('amount') }} Taka</small>
+                                    <small class="text-danger pull-right">Total Expenses : Rp. {{ $expenses->sum('amount') }}</small>
                                 </h3>
                             </div>
                             <!-- /.card-header -->

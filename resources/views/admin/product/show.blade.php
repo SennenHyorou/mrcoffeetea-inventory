@@ -49,7 +49,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputFile">Image</label>
                                                 <p>
-                                                    <img width="50" height="50" src="{{ URL::asset("storage/product/".$product->image) }}" alt="{{ $product->name }}">
+                                                    <img width="50" height="50" src="{{ URL::asset('storage/product/'.$product->image)   }}" alt="{{ $product->name }}">
                                                 </p>
                                             </div>
                                             <div class="form-group">
@@ -68,14 +68,6 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Garage</label>
-                                                <p>{{ $product->garage }}</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Route</label>
-                                                <p>{{ $product->route }}</p>
-                                            </div>
-                                            <div class="form-group">
                                                 <label>Buying Date</label>
                                                 <p>{{ $product->buying_date->toFormattedDateString() }}</p>
                                             </div>
@@ -85,11 +77,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Buying Price</label>
-                                                <p>{{ number_format($product->buying_price, 2) ." Taka" }}</p>
+                                                <p>{{ "Rp. ".number_format($product->buying_price, 2) }}</p>
                                             </div>
                                             <div class="form-group">
                                                 <label>Selling Price</label>
-                                                <p>{{ number_format($product->selling_price, 2) ." Taka" }}</p>
+                                                <p>{{ "Rp. ".number_format($product->selling_price, 2) }}</p>
                                             </div>
                                         </div>
                                     </div>
