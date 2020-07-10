@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Product;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\FileRequest;
 use App\Http\Requests\Product\StoreRequest;
 
@@ -40,7 +41,7 @@ class ProductController extends Controller
     {
         try {
             $image = $request->file('image');
-            $slug =  Str::slug($request->input('name'));
+            $slug =  Str::slug($request->get('name'));
             if (isset($image))
             {
                 $currentDate = Carbon::now()->toDateString();
@@ -57,14 +58,14 @@ class ProductController extends Controller
             }
     
             $product = new Product();
-            $product->name = $request->input('name');
-            $product->category_id = $request->input('category_id');
-            $product->supplier_id = $request->input('supplier_id');
-            $product->code = $request->input('code');
-            $product->buying_date = $request->input('buying_date');
-            $product->expire_date = $request->input('expire_date');
-            $product->buying_price = $request->input('buying_price');
-            $product->selling_price = $request->input('selling_price');
+            $product->name = $request->get('name');
+            $product->category_id = $request->get('category_id');
+            $product->supplier_id = $request->get('supplier_id');
+            $product->code = $request->get('code');
+            $product->buying_date = $request->get('buying_date');
+            $product->expire_date = $request->get('expire_date');
+            $product->buying_price = $request->get('buying_price');
+            $product->selling_price = $request->get('selling_price');
             $product->image = $imageName;
             if ($product->save())
             {
@@ -89,7 +90,7 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Request $request)
     {
         try {
             $product = Product::find($request->id);
@@ -119,7 +120,7 @@ class ProductController extends Controller
             if (!$product) return response()->json($this->formatResponse("Data not available"), 400);
     
             $image = $request->file('image');
-            $slug =  Str::slug($request->input('name'));
+            $slug =  Str::slug($request->get('name'));
             if (isset($image))
             {
                 $currentDate = Carbon::now()->toDateString();
@@ -142,26 +143,26 @@ class ProductController extends Controller
                 $imageName = $product->image;
             }
     
-            $buying_date = $request->input('buying_date');
+            $buying_date = $request->get('buying_date');
             if (!isset($buying_date))
             {
                 $buying_date = $product->buying_date;
             }
     
-            $expire_date = $request->input('expire_date');
+            $expire_date = $request->get('expire_date');
             if (!isset($expire_date))
             {
                 $expire_date = $product->expire_date;
             }
     
-            $product->name = $request->input('name');
-            $product->category_id = $request->input('category_id');
-            $product->supplier_id = $request->input('supplier_id');
-            $product->code = $request->input('code');
+            $product->name = $request->get('name');
+            $product->category_id = $request->get('category_id');
+            $product->supplier_id = $request->get('supplier_id');
+            $product->code = $request->get('code');
             $product->buying_date = $buying_date;
             $product->expire_date = $expire_date;
-            $product->buying_price = $request->input('buying_price');
-            $product->selling_price = $request->input('selling_price');
+            $product->buying_price = $request->get('buying_price');
+            $product->selling_price = $request->get('selling_price');
             $product->image = $imageName;
             if ($product->save())
             {

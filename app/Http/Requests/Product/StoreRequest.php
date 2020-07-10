@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Product;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class StoreRequest extends FormRequest
 {
@@ -15,13 +18,12 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3',
-            'category_id' => 'required|integer|exists:categories',
-            'supplier_id' => 'required|integer|exists:suppliers',
+            'category_id' => 'required|integer|exists:categories,id',
+            'supplier_id' => 'required|integer|exists:suppliers,id',
             'code' => 'required',
-            'garage' => 'required',
-            'image' => 'required | image',
-            'buying_date' => 'required | date_format:M / d / Y',
-            'expire_date' => 'date_format:M / d / Y',
+            'image' => 'sometimes | image',
+            'buying_date' => 'required|date',
+            'expire_date' => 'date',
             'buying_price' => 'required',
             'selling_price' => 'required',
         ];
@@ -32,6 +34,7 @@ class StoreRequest extends FormRequest
         return [
             'name.required' => 'Name is required!',
             'name.min' => 'Please input more than 3 character',
+            'buying_date.date_format' => "Buying date format is wrong, Example: ".date("m/d/Y")
         ];
     }
 
