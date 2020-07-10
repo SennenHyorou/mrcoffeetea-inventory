@@ -47,6 +47,6 @@ class DashboardController extends Controller
             return $a['months'] - $b['months'];
         });
 
-        return view('admin.dashboard_ori', compact('today_expenses', 'yesterday_expenses', 'month_expenses', 'previous_month_expenses', 'year_expenses', 'previous_year_expenses', 'expenses', 'current_expenses'));
+        return view('admin.dashboard', compact('today_expenses', 'yesterday_expenses', 'month_expenses', 'previous_month_expenses', 'year_expenses', 'previous_year_expenses', 'expenses', 'current_expenses'));
     }
 }
